@@ -5,9 +5,9 @@ enableEmoji = true
 footnotereturnlinkcontents = "↩"
 googleAnalytics = ""
 ignoreFiles = ["\\.Rmd$", "_files$", "_cache$"]
-languageCode = "en-us"
+languageCode = "jp"
 theme = "hugo-classic"
-title = "Classic"
+title = "in-my-space"
 
 [markup.goldmark.renderer]
 unsafe = true

@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Markdown on Classic</title>
-    <link>https://hyuuri.github.io/in-my-space/tags/markdown/</link>
-    <description>Recent content in Markdown on Classic</description>
+    <title>Markdown on in-my-space</title>
+    <link>https://hyuuri.github.io/tags/markdown/</link>
+    <description>Recent content in Markdown on in-my-space</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Thu, 30 Aug 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://hyuuri.github.io/in-my-space/tags/markdown/index.xml" rel="self" type="application/rss+xml" />
+    <language>jp</language>
+    <lastBuildDate>Thu, 30 Aug 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://hyuuri.github.io/tags/markdown/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Markdown Guide (modified)</title>
-      <link>https://hyuuri.github.io/in-my-space/post/2018/08/30/markdown-guide-modified/</link>
+      <link>https://hyuuri.github.io/post/2018/08/30/markdown-guide-modified/</link>
       <pubDate>Thu, 30 Aug 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://hyuuri.github.io/in-my-space/post/2018/08/30/markdown-guide-modified/</guid>
+      <guid>https://hyuuri.github.io/post/2018/08/30/markdown-guide-modified/</guid>
       <description>An h1 header Paragraphs are separated by a blank line.
 2nd paragraph. Italic, bold, and monospace. Itemized lists look like:
  this one that one the other one  Note that &amp;mdash; not considering the asterisk &amp;mdash; the actual text content starts at 4-columns in.
