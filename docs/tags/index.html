@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="https://hyuuri.github.io/in-my-space/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://hyuuri.github.io/in-my-space/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://hyuuri.github.io/in-my-space/images/favicon-16x16.png">
+    <link rel="manifest" href="https://hyuuri.github.io/in-my-space/images/site.webmanifest">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A simple, minimal blog for those who love text.">
+    <title>Tags | Classic</title>
+    <link rel="stylesheet" href="https://hyuuri.github.io/in-my-space/css/style.css" />
+    <link rel="stylesheet" href="https://hyuuri.github.io/in-my-space/css/fonts.css" />
+    <link rel="stylesheet" href="https://hyuuri.github.io/in-my-space/css/theme-override.css">
+    <header>
+
+  <nav>
+    <ul>
+      
+      
+      <li class="pull-left ">
+        <a href="https://hyuuri.github.io/in-my-space">~/classic</a>
+      </li>
+      
+      
+      <li class="pull-left ">
+        <a href="https://hyuuri.github.io/in-my-space/categories/">~/categories</a>
+      </li>
+      
+      
+      <li class="pull-left current">
+        <a href="https://hyuuri.github.io/in-my-space/tags/">~/tags</a>
+      </li>
+      
+
+      
+      
+      <li class="pull-right">
+        <a href="https://hyuuri.github.io/in-my-space/index.xml">~/subscribe</a>
+      </li>
+      
+
+    </ul>
+  </nav>
+</header>
+
+  </head>
+
+  <body>
+    <br/>
+
+
+<h1>Tags</h1>
+
+<ul class="terms">
+  
+  <li>
+    <a href="https://hyuuri.github.io/in-my-space/tags/html/">HTML</a> (1)
+  </li>
+  
+  <li>
+    <a href="https://hyuuri.github.io/in-my-space/tags/juicy/">Juicy</a> (1)
+  </li>
+  
+  <li>
+    <a href="https://hyuuri.github.io/in-my-space/tags/markdown/">Markdown</a> (1)
+  </li>
+  
+</ul>
+
+    <footer>
+      
+<script>
+(function() {
+  function center_el(tagName) {
+    var tags = document.getElementsByTagName(tagName), i, tag;
+    for (i = 0; i < tags.length; i++) {
+      tag = tags[i];
+      var parent = tag.parentElement;
+      
+      if (parent.childNodes.length === 1) {
+        
+        if (parent.nodeName === 'A') {
+          parent = parent.parentElement;
+          if (parent.childNodes.length != 1) continue;
+        }
+        if (parent.nodeName === 'P') parent.style.textAlign = 'center';
+      }
+    }
+  }
+  var tagNames = ['img', 'embed', 'object'];
+  for (var i = 0; i < tagNames.length; i++) {
+    center_el(tagNames[i]);
+  }
+})();
+</script>
+
+      
+      <hr/>
+      Open-Source | <a href="https://github.com/goodroot/hugo-classic">Github</a> | <a href="https://keybase.io/goodroot">Keybase</a>
+      
+    </footer>
+  </body>
+</html>
+

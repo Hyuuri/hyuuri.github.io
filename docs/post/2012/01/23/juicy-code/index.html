@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="https://hyuuri.github.io/in-my-space/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://hyuuri.github.io/in-my-space/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://hyuuri.github.io/in-my-space/images/favicon-16x16.png">
+    <link rel="manifest" href="https://hyuuri.github.io/in-my-space/images/site.webmanifest">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A simple, minimal blog for those who love text.">
+    <title>Juicy Code | Classic</title>
+    <link rel="stylesheet" href="https://hyuuri.github.io/in-my-space/css/style.css" />
+    <link rel="stylesheet" href="https://hyuuri.github.io/in-my-space/css/fonts.css" />
+    <link rel="stylesheet" href="https://hyuuri.github.io/in-my-space/css/theme-override.css">
+    <header>
+
+  <nav>
+    <ul>
+      
+      
+      <li class="pull-left ">
+        <a href="https://hyuuri.github.io/in-my-space">~/classic</a>
+      </li>
+      
+      
+      <li class="pull-left ">
+        <a href="https://hyuuri.github.io/in-my-space/categories/">~/categories</a>
+      </li>
+      
+      
+      <li class="pull-left ">
+        <a href="https://hyuuri.github.io/in-my-space/tags/">~/tags</a>
+      </li>
+      
+
+      
+      
+      <li class="pull-right">
+        <a href="https://hyuuri.github.io/in-my-space/index.xml">~/subscribe</a>
+      </li>
+      
+
+    </ul>
+  </nav>
+</header>
+
+  </head>
+
+  <body>
+    <br/>
+
+<div class="article-meta">
+<h1><span class="title">Juicy Code</span></h1>
+<h2 class="author">Open Source</h2>
+<h2 class="date">2012/01/23</h2>
+<p class="terms">
+  
+  
+  Categories: <a href="https://hyuuri.github.io/in-my-space/categories/code">Code</a> 
+  
+  
+  
+  Tags: <a href="https://hyuuri.github.io/in-my-space/tags/juicy">Juicy</a> 
+  
+  
+</p>
+</div>
+
+
+<div class="content-wrapper">
+  <main>
+    <p>Check out this JUICY! code:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ruby" data-lang="ruby"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">with_value_from_database</span>(value)
+</span></span><span style="display:flex;"><span>  self<span style="color:#f92672">.</span>class<span style="color:#f92672">.</span>from_database(name, value, type)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">end</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">with_cast_value</span>(value)
+</span></span><span style="display:flex;"><span>  self<span style="color:#f92672">.</span>class<span style="color:#f92672">.</span>with_cast_value(name, value, type)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">end</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">with_type</span>(type)
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> changed_in_place?
+</span></span><span style="display:flex;"><span>    with_value_from_user(value)<span style="color:#f92672">.</span>with_type(type)
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>    self<span style="color:#f92672">.</span>class<span style="color:#f92672">.</span>new(name, value_before_type_cast, type, original_attribute)
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">end</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">end</span>
+</span></span></code></pre></div>
+    <a href="https://hyuuri.github.io/in-my-space/"> >> Home</a>
+  </main>
+</div>
+    <footer>
+      
+<script>
+(function() {
+  function center_el(tagName) {
+    var tags = document.getElementsByTagName(tagName), i, tag;
+    for (i = 0; i < tags.length; i++) {
+      tag = tags[i];
+      var parent = tag.parentElement;
+      
+      if (parent.childNodes.length === 1) {
+        
+        if (parent.nodeName === 'A') {
+          parent = parent.parentElement;
+          if (parent.childNodes.length != 1) continue;
+        }
+        if (parent.nodeName === 'P') parent.style.textAlign = 'center';
+      }
+    }
+  }
+  var tagNames = ['img', 'embed', 'object'];
+  for (var i = 0; i < tagNames.length; i++) {
+    center_el(tagNames[i]);
+  }
+})();
+</script>
+
+      
+      <hr/>
+      Open-Source | <a href="https://github.com/goodroot/hugo-classic">Github</a> | <a href="https://keybase.io/goodroot">Keybase</a>
+      
+    </footer>
+  </body>
+</html>
+
