@@ -1,4 +1,4 @@
-baseurl = "https://hyuuri.github.io/"
+baseurl = "https://hyuuri.github.io/in-my-space/"
 canonifyurls = true
 publishDir = "docs"
 enableEmoji = true
