@@ -43,4 +43,4 @@ url = "/index.xml"
 [params]
 custom_css = ["css/theme-override.css"]
 description = "A simple, minimal blog for those who love text."
-footer = "[Github:black_cat](https://github.com/Hyuuri) "
+footer = "[Github :black_cat](https://github.com/Hyuuri) "
