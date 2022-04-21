@@ -6,7 +6,19 @@
     <description>Recent content in Posts on in-my-space</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>jp</language>
-    <lastBuildDate>Thu, 30 Aug 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://hyuuri.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 21 Apr 2022 22:15:57 +0900</lastBuildDate><atom:link href="https://hyuuri.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hugoでサイトを作るなどした</title>
+      <link>https://hyuuri.github.io/post/2022/04/21/hugo%E3%81%A7%E3%82%B5%E3%82%A4%E3%83%88%E3%82%92%E4%BD%9C%E3%82%8B%E3%81%AA%E3%81%A9%E3%81%97%E3%81%9F/</link>
+      <pubDate>Thu, 21 Apr 2022 22:15:57 +0900</pubDate>
+      
+      <guid>https://hyuuri.github.io/post/2022/04/21/hugo%E3%81%A7%E3%82%B5%E3%82%A4%E3%83%88%E3%82%92%E4%BD%9C%E3%82%8B%E3%81%AA%E3%81%A9%E3%81%97%E3%81%9F/</guid>
+      <description>Hugoでサイトを作るなどした 研究室の先生に自分でサイトくらい持っておかないといけないよ、的なことを言われたのでもそもそと作ってみました。 Webに強い友人に聴いたところGatsubyは最近はそこまで流行っておらず、HugoがGoで作られておりなかなかに良いとおすすめされたのでこれにしました。 実際HTMLとかCSSとかをがりがり書かなくても、なかなかに良いテンプレートが合って適当にMDで書けばいい感じにしてくれるので満足してます。
+作るまでにあった色々のトラブルシューティングなど デプロイ時にthemeが適用されない 対処法
+hugo -D でビルドをする。（あれ、これなんでだっけ&amp;hellip;)
+画像が表示されない 原因、変な名前で画像を保存してた。（_.pngだった&amp;hellip;)</description>
+    </item>
+    
     <item>
       <title>Markdown Guide (modified)</title>
       <link>https://hyuuri.github.io/post/2018/08/30/markdown-guide-modified/</link>
