@@ -40,4 +40,4 @@ weight = 2
 [params]
 custom_css = ["css/theme-override.css"]
 description = "A simple, minimal blog for those who love text."
-footer = "[MyGithub](https://github.com/Hyuuri) "
+footer = "[MyGithub](https://github.com/Hyuuri)[Powered By hugo-classic](https://themes.gohugo.io/themes/hugo-classic/) "
