@@ -2,6 +2,10 @@
 title: "Earth Mover's Distanceの2次元行列版をPytorchで実装した"
 date: 2022-05-28T15:50:46+09:00
 draft: true
+categories:
+    - Tech
+Tags:
+    - Pytorch
 ---
 
 # EMDについて
