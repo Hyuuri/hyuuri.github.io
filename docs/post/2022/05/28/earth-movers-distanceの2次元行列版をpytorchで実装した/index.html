@@ -74,13 +74,11 @@ KL距離などと似ていますが、EMDは重み、という概念を用いる
 <p>研究で尤度マップをモデルに生成させており、その学習に用いてみようと思い立ったためです。<br>
 単純に考えれば、正解ラベルの尤度マップとのMSELoss(二乗誤差損失)でも問題ないようにも思いますが、肝心の尤度の分布のズレ等は反映されない問題があります。</p>
 <h1 id="実装">実装</h1>
-<p>結構単純です。
-&rsquo;&rsquo;'
-def EMDLoss(self,y_pred, y_true):
-distance = torch.mean(torch.sum(torch.sum(torch.square(torch.cumsum(torch.cumsum(y_true, dim=3), dim=2) - torch.cumsum(torch.cumsum(y_pred, dim=3),dim=2)),dim=3), dim=2))
-return distance
-&rsquo;&rsquo;'
-二次元行列の積分画像的なものを作成し、その差分を取り、二乗和を取ります。あとはそのBatchの平均を取ってLossとします。
+<p>結構単純です<br></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">EMDLoss</span>(self,y_pred, y_true):
+</span></span><span style="display:flex;"><span>        distance <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>mean(torch<span style="color:#f92672">.</span>sum(torch<span style="color:#f92672">.</span>sum(torch<span style="color:#f92672">.</span>square(torch<span style="color:#f92672">.</span>cumsum(torch<span style="color:#f92672">.</span>cumsum(y_true, dim<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>), dim<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>) <span style="color:#f92672">-</span> torch<span style="color:#f92672">.</span>cumsum(torch<span style="color:#f92672">.</span>cumsum(y_pred, dim<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>),dim<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>)),dim<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>), dim<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>))
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> distance
+</span></span></code></pre></div><p>二次元行列の積分画像的なものを作成し、その差分を取り、二乗和を取ります。あとはそのBatchの平均を取ってLossとします。
 (間違いがあれば教えて下さい。)<br></p>
 <h1 id="現状">現状</h1>
 <p>計算量はGPU上で行ってもそこそこ重めです。速度の計測はしていませんがそこそこ遅いので我慢してください。

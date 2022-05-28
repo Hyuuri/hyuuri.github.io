@@ -18,7 +18,7 @@ KL距離などと似ていますが、EMDは重み、という概念を用いる
 単純に考えれば、正解ラベルの尤度マップとのMSELoss(二乗誤差損失)でも問題ないようにも思いますが、肝心の尤度の分布のズレ等は反映されない問題があります。
 
 # 実装
-結構単純です。
+結構単純です<br>
 ~~~python
     def EMDLoss(self,y_pred, y_true):
         distance = torch.mean(torch.sum(torch.sum(torch.square(torch.cumsum(torch.cumsum(y_true, dim=3), dim=2) - torch.cumsum(torch.cumsum(y_pred, dim=3),dim=2)),dim=3), dim=2))
