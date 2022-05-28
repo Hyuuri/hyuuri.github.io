@@ -5,6 +5,52 @@
     <link>https://hyuuri.github.io/tags/</link>
     <description>Recent content in Tags on in-my-space</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>jp</language><atom:link href="https://hyuuri.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <language>jp</language>
+    <lastBuildDate>Sat, 28 May 2022 15:50:46 +0900</lastBuildDate><atom:link href="https://hyuuri.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Pytorch</title>
+      <link>https://hyuuri.github.io/tags/pytorch/</link>
+      <pubDate>Sat, 28 May 2022 15:50:46 +0900</pubDate>
+      
+      <guid>https://hyuuri.github.io/tags/pytorch/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>poem</title>
+      <link>https://hyuuri.github.io/tags/poem/</link>
+      <pubDate>Sun, 24 Apr 2022 14:52:51 +0900</pubDate>
+      
+      <guid>https://hyuuri.github.io/tags/poem/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>report</title>
+      <link>https://hyuuri.github.io/tags/report/</link>
+      <pubDate>Sun, 24 Apr 2022 14:52:51 +0900</pubDate>
+      
+      <guid>https://hyuuri.github.io/tags/report/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>thought</title>
+      <link>https://hyuuri.github.io/tags/thought/</link>
+      <pubDate>Sun, 24 Apr 2022 14:52:51 +0900</pubDate>
+      
+      <guid>https://hyuuri.github.io/tags/thought/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>hugo</title>
+      <link>https://hyuuri.github.io/tags/hugo/</link>
+      <pubDate>Thu, 21 Apr 2022 22:15:57 +0900</pubDate>
+      
+      <guid>https://hyuuri.github.io/tags/hugo/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>
