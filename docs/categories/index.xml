@@ -5,25 +5,6 @@
     <link>https://hyuuri.github.io/categories/</link>
     <description>Recent content in Categories on in-my-space</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>jp</language>
-    <lastBuildDate>Sat, 28 May 2022 15:50:46 +0900</lastBuildDate><atom:link href="https://hyuuri.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Tech</title>
-      <link>https://hyuuri.github.io/categories/tech/</link>
-      <pubDate>Sat, 28 May 2022 15:50:46 +0900</pubDate>
-      
-      <guid>https://hyuuri.github.io/categories/tech/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>job_hunting</title>
-      <link>https://hyuuri.github.io/categories/job_hunting/</link>
-      <pubDate>Sun, 24 Apr 2022 14:52:51 +0900</pubDate>
-      
-      <guid>https://hyuuri.github.io/categories/job_hunting/</guid>
-      <description></description>
-    </item>
-    
+    <language>jp</language><atom:link href="https://hyuuri.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

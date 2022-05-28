@@ -19,11 +19,11 @@ KL距離などと似ていますが、EMDは重み、という概念を用いる
 
 # 実装
 結構単純です。
-'''
+~~~python
     def EMDLoss(self,y_pred, y_true):
         distance = torch.mean(torch.sum(torch.sum(torch.square(torch.cumsum(torch.cumsum(y_true, dim=3), dim=2) - torch.cumsum(torch.cumsum(y_pred, dim=3),dim=2)),dim=3), dim=2))
         return distance
-'''
+~~~
 二次元行列の積分画像的なものを作成し、その差分を取り、二乗和を取ります。あとはそのBatchの平均を取ってLossとします。
 (間違いがあれば教えて下さい。)<br>
 
