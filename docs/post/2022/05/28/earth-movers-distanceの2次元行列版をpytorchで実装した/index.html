@@ -69,20 +69,27 @@
     <h1 id="emdについて">EMDについて</h1>
 <p>Earth Mover&rsquo;s Distance(EMD)は分布間の距離を表す指標の一つです。<br>
 KL距離などと似ていますが、EMDは重み、という概念を用いる部分が肝ですね。重みと距離を表すものですので、MLの分野におけるLossとして用いることができそうですね。<br>
-例えば、GANでは積極的に用いられており、W-GANではWassernstein Lossという名前で用いられています。<br></p>
+例えば、GANでは積極的に用いられており、W-GANでは連続値版のEMDである、Wassernstein Lossという名前で用いられています。<br></p>
 <h1 id="なぜ今回2次元行列版を作ったか">なぜ今回2次元行列版を作ったか</h1>
 <p>研究で尤度マップをモデルに生成させており、その学習に用いてみようと思い立ったためです。<br>
 単純に考えれば、正解ラベルの尤度マップとのMSELoss(二乗誤差損失)でも問題ないようにも思いますが、肝心の尤度の分布のズレ等は反映されない問題があります。</p>
 <h1 id="実装">実装</h1>
 <p>結構単純です<br></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">EMDLoss</span>(self,y_pred, y_true):
-</span></span><span style="display:flex;"><span>        distance <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>mean(torch<span style="color:#f92672">.</span>sum(torch<span style="color:#f92672">.</span>sum(torch<span style="color:#f92672">.</span>square(torch<span style="color:#f92672">.</span>cumsum(torch<span style="color:#f92672">.</span>cumsum(y_true, dim<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>), dim<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>) <span style="color:#f92672">-</span> torch<span style="color:#f92672">.</span>cumsum(torch<span style="color:#f92672">.</span>cumsum(y_pred, dim<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>),dim<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>)),dim<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>), dim<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>))
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> distance
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">EMDLoss</span>(self,y_pred, y_true):
+</span></span><span style="display:flex;"><span>	integral_y_true <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>cumsum(torch<span style="color:#f92672">.</span>cumsum(y_true, dim<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>), dim<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>) 
+</span></span><span style="display:flex;"><span>	integral_y_pred <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>cumsum(torch<span style="color:#f92672">.</span>cumsum(y_pred, dim<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>), dim<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>	square <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>square(integral_y_true <span style="color:#f92672">-</span> integral_y_pred)
+</span></span><span style="display:flex;"><span>	square_sum <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>sum(torch<span style="color:#f92672">.</span>sum(square, dim<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>), dim<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>	mean <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>div(square_sum, len(y_pred[<span style="color:#ae81ff">0</span>][<span style="color:#ae81ff">0</span>])<span style="color:#f92672">**</span><span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>	distance <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>mean(mean)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> distance 
 </span></span></code></pre></div><p>二次元行列の積分画像的なものを作成し、その差分を取り、二乗和を取ります。あとはそのBatchの平均を取ってLossとします。
 (間違いがあれば教えて下さい。)<br></p>
 <h1 id="現状">現状</h1>
 <p>計算量はGPU上で行ってもそこそこ重めです。速度の計測はしていませんがそこそこ遅いので我慢してください。
 ただし、結構分布としては近づくように学習は進んでいるので意図通りのものはできたのかなと思います。</p>
+<h1 id="参考文献">参考文献</h1>
+<p><a href="https://discuss.pytorch.org/t/implementation-of-squared-earth-movers-distance-loss-function-for-ordinal-scale/107927">https://discuss.pytorch.org/t/implementation-of-squared-earth-movers-distance-loss-function-for-ordinal-scale/107927</a></p>
 
     <a href="https://hyuuri.github.io/"> >> Home</a>
   </main>
