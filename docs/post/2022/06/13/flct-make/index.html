@@ -65,12 +65,23 @@
     <h1 id="file-count-commandをとりあえず作る">File Count commandをとりあえず作る</h1>
 <p>今いるディレクトリのファイルの数をカウントしたい時がある。<br>
 調べても既存コマンドの組み合わせしか出てこなくてウザい、いちいちオプションとか覚えてないので。<br>
-かんたんにCLIのツールを作ってみた。</p>
+とりあえずこれ打てばファイル数がわかるCLIのツールを作ってみた。</p>
 <pre tabindex="0"><code>#!/bin/sh
 
-ls -U1 | wc -l
-</code></pre><p>これだけでとりあえずは動くので良しとする。<br>
-今後適当にオプションとかで動作を切り分ける予定<br></p>
+while getopts r OPT; do
+    case $OPT in
+        r ) FLG_R=true ;;
+    esac
+done
+
+if [ &#34;${FLG\_R}&#34; ]; then
+	find . -type f|wc -l
+else
+	ls -U1 | wc -l
+fi
+</code></pre><p>動作としてはオプション指定ナシでカレントディレクトリのファイル数を表示（サブディレクトリ内のファイル数はカウントしない)<br>
+-r オプションでサブディレクトリ内のファイル数まで再帰的に探索して表示する感じ<br></p>
+<p>これだけでとりあえずは動くので良しとする。<br></p>
 <p>あとは適当にパーミッションを777で設定して、.bashrcとか.bash_profileとかにPATH通せばよろし。<br></p>
 
     <a href="https://hyuuri.github.io/"> >> Home</a>

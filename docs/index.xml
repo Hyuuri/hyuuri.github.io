@@ -15,9 +15,10 @@
       <guid>https://hyuuri.github.io/post/2022/06/13/flct-make/</guid>
       <description>File Count commandをとりあえず作る 今いるディレクトリのファイルの数をカウントしたい時がある。
 調べても既存コマンドの組み合わせしか出てこなくてウザい、いちいちオプションとか覚えてないので。
-かんたんにCLIのツールを作ってみた。
-#!/bin/sh ls -U1 | wc -l これだけでとりあえずは動くので良しとする。
-今後適当にオプションとかで動作を切り分ける予定
+とりあえずこれ打てばファイル数がわかるCLIのツールを作ってみた。
+#!/bin/sh while getopts r OPT; do case $OPT in r ) FLG_R=true ;; esac done if [ &amp;#34;${FLG\_R}&amp;#34; ]; then find . -type f|wc -l else ls -U1 | wc -l fi 動作としてはオプション指定ナシでカレントディレクトリのファイル数を表示（サブディレクトリ内のファイル数はカウントしない)
+-r オプションでサブディレクトリ内のファイル数まで再帰的に探索して表示する感じ
+これだけでとりあえずは動くので良しとする。
 あとは適当にパーミッションを777で設定して、.bashrcとか.bash_profileとかにPATH通せばよろし。</description>
     </item>
     
