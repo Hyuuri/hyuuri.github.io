@@ -8,18 +8,19 @@
     <language>jp</language>
     <lastBuildDate>Sat, 28 May 2022 15:50:46 +0900</lastBuildDate><atom:link href="https://hyuuri.github.io/tags/pytorch/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Earth Mover&#39;s Distanceを二次元平面に適用するやつをPytorchで実装した</title>
-      <link>https://hyuuri.github.io/post/2022/05/28/earth-movers-distance%E3%82%92%E4%BA%8C%E6%AC%A1%E5%85%83%E5%B9%B3%E9%9D%A2%E3%81%AB%E9%81%A9%E7%94%A8%E3%81%99%E3%82%8B%E3%82%84%E3%81%A4%E3%82%92pytorch%E3%81%A7%E5%AE%9F%E8%A3%85%E3%81%97%E3%81%9F/</link>
+      <title>Squared Earth Mover&#39;s Distanceを二次元平面に適用するやつをPytorchで実装した</title>
+      <link>https://hyuuri.github.io/post/2022/05/28/squared-earth-movers-distance%E3%82%92%E4%BA%8C%E6%AC%A1%E5%85%83%E5%B9%B3%E9%9D%A2%E3%81%AB%E9%81%A9%E7%94%A8%E3%81%99%E3%82%8B%E3%82%84%E3%81%A4%E3%82%92pytorch%E3%81%A7%E5%AE%9F%E8%A3%85%E3%81%97%E3%81%9F/</link>
       <pubDate>Sat, 28 May 2022 15:50:46 +0900</pubDate>
       
-      <guid>https://hyuuri.github.io/post/2022/05/28/earth-movers-distance%E3%82%92%E4%BA%8C%E6%AC%A1%E5%85%83%E5%B9%B3%E9%9D%A2%E3%81%AB%E9%81%A9%E7%94%A8%E3%81%99%E3%82%8B%E3%82%84%E3%81%A4%E3%82%92pytorch%E3%81%A7%E5%AE%9F%E8%A3%85%E3%81%97%E3%81%9F/</guid>
+      <guid>https://hyuuri.github.io/post/2022/05/28/squared-earth-movers-distance%E3%82%92%E4%BA%8C%E6%AC%A1%E5%85%83%E5%B9%B3%E9%9D%A2%E3%81%AB%E9%81%A9%E7%94%A8%E3%81%99%E3%82%8B%E3%82%84%E3%81%A4%E3%82%92pytorch%E3%81%A7%E5%AE%9F%E8%A3%85%E3%81%97%E3%81%9F/</guid>
       <description>EMDについて Earth Mover&amp;rsquo;s Distance(EMD)は分布間の距離を表す指標の一つです。
 KL距離などと似ていますが、EMDは重み、という概念を用いる部分が肝ですね。重みと距離を表すものですので、MLの分野におけるLossとして用いることができそうですね。
 例えば、GANでは積極的に用いられており、W-GANでは連続値版のEMDである、Wassernstein Lossという名前で用いられています。
+その平面画像への適用を行うSquared EMDなるものが存在しているらしいので、それを参考文献を参照して二次元行列に対して適用可能なものを作ってみました。
 なぜ今回これを作ったか 研究で尤度マップをモデルに生成させており、その学習に用いてみようと思い立ったためです。
 単純に考えれば、正解ラベルの尤度マップとのMSELoss(二乗誤差損失)でも問題ないようにも思いますが、肝心の尤度の分布のズレ等は反映されない問題があります。
 実装 結構単純です
-def EMDLoss(self,y_pred, y_true): 	integral_y_true = torch.cumsum(torch.cumsum(y_true, dim=3), dim=2) 	integral_y_pred = torch.cumsum(torch.cumsum(y_pred, dim=3), dim=2) 	square = torch.square(integral_y_true - integral_y_pred) 	square_sum = torch.sum(torch.sum(square, dim=3), dim=2) 	mean = torch.div(square_sum, len(y_pred[0][0])**2) 	distance = torch.mean(mean) 	return distance 二次元行列の積分画像的なものを作成し、その差分を取り、二乗和を取ります。あとはそのBatchの平均を取ってLossとします。 (間違いがあれば教えて下さい。)
+def SquaredEMDLoss(self,y_pred, y_true): 	integral_y_true = torch.cumsum(torch.cumsum(y_true, dim=3), dim=2) 	integral_y_pred = torch.cumsum(torch.cumsum(y_pred, dim=3), dim=2) 	square = torch.square(integral_y_true - integral_y_pred) 	square_sum = torch.sum(torch.sum(square, dim=3), dim=2) 	mean = torch.div(square_sum, len(y_pred[0][0])**2) 	distance = torch.mean(mean) 	return distance 二次元行列の積分画像的なものを作成し、その差分を取り、二乗和を取ります。あとはそのBatchの平均を取ってLossとします。 (間違いがあれば教えて下さい。)
 現状 計算量はGPU上で行ってもそこそこ重めです。速度の計測はしていませんがそこそこ遅いので我慢してください。 ただし、結構分布としては近づくように学習は進んでいるので意図通りのものはできたのかなと思います。
 *追記 学習そのものは進みますが、最適化問題を無理やり微分可能なものに落とし込んでいるために、学習結果自体は芳しいものにはなりませんでした。
 尤度マップがギザギザになってしまったり、曖昧な表現が難しくなってしまいました。うまく活かせるタスクとそうでないタスクを選びそうです。

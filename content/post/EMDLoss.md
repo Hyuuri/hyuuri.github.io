@@ -1,5 +1,5 @@
 ---
-title: "Earth Mover's Distanceを二次元平面に適用するやつをPytorchで実装した"
+title: "Squared Earth Mover's Distanceを二次元平面に適用するやつをPytorchで実装した"
 date: 2022-05-28T15:50:46+09:00
 draft: true
 categories:
@@ -12,6 +12,7 @@ Tags:
 Earth Mover's Distance(EMD)は分布間の距離を表す指標の一つです。<br>
 KL距離などと似ていますが、EMDは重み、という概念を用いる部分が肝ですね。重みと距離を表すものですので、MLの分野におけるLossとして用いることができそうですね。<br>
 例えば、GANでは積極的に用いられており、W-GANでは連続値版のEMDである、Wassernstein Lossという名前で用いられています。<br>
+その平面画像への適用を行うSquared EMDなるものが存在しているらしいので、それを参考文献を参照して二次元行列に対して適用可能なものを作ってみました。
 
 # なぜ今回これを作ったか
 研究で尤度マップをモデルに生成させており、その学習に用いてみようと思い立ったためです。<br>
@@ -20,7 +21,7 @@ KL距離などと似ていますが、EMDは重み、という概念を用いる
 # 実装
 結構単純です<br>
 ~~~python
-def EMDLoss(self,y_pred, y_true):
+def SquaredEMDLoss(self,y_pred, y_true):
 	integral_y_true = torch.cumsum(torch.cumsum(y_true, dim=3), dim=2) 
 	integral_y_pred = torch.cumsum(torch.cumsum(y_pred, dim=3), dim=2)
 	square = torch.square(integral_y_true - integral_y_pred)
