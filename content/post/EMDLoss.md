@@ -1,5 +1,5 @@
 ---
-title: "Earth Mover's Distanceの二乗距離で定義した版をPytorchで実装した"
+title: "Earth Mover's Distanceを二次元平面に適用するやつをPytorchで実装した"
 date: 2022-05-28T15:50:46+09:00
 draft: true
 categories:
