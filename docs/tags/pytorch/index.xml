@@ -6,7 +6,18 @@
     <description>Recent content in Pytorch on in-my-space</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>jp</language>
-    <lastBuildDate>Sat, 28 May 2022 15:50:46 +0900</lastBuildDate><atom:link href="https://hyuuri.github.io/tags/pytorch/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 14 Jul 2022 13:51:12 +0900</lastBuildDate><atom:link href="https://hyuuri.github.io/tags/pytorch/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Pytorch Metric Learningでのバッチサイズの話</title>
+      <link>https://hyuuri.github.io/post/2022/07/14/pytorch-metric-learning%E3%81%A7%E3%81%AE%E3%83%90%E3%83%83%E3%83%81%E3%82%B5%E3%82%A4%E3%82%BA%E3%81%AE%E8%A9%B1/</link>
+      <pubDate>Thu, 14 Jul 2022 13:51:12 +0900</pubDate>
+      
+      <guid>https://hyuuri.github.io/post/2022/07/14/pytorch-metric-learning%E3%81%A7%E3%81%AE%E3%83%90%E3%83%83%E3%83%81%E3%82%B5%E3%82%A4%E3%82%BA%E3%81%AE%E8%A9%B1/</guid>
+      <description>Pytorch Metric Learningとは？ 端的に言えば距離学習と呼ばれる機械学習タスクを扱うPytorchラッパーだ.
+操作感はかなりPytorch Lightningと近く、距離学習が簡単に実行できる. こいつはかなり楽でいいんだけれど、イマイチ設定周りは試行錯誤がいる、というのが実際だ.
+細かい説明は省くがそもそも距離学習は概念自体はわかりやすいが、様々な手法が存在するし、パラメータに大きく依存するところが大きく学習は結構大変、というのが正直なところだ. そこで色々試した結果わかったことのメモ書きと現状の謎を書いておこうと思う. 随時付け足していく. 基本的指針 batch size は基本的に大きい方が良い これはTripletの選択の存在が大きいと考えている. つまり、多クラスの場合Tripletを作成する際にBatch Sizeが小さいとバリエーションが少ない可能性があるという話だ. 20クラスと仮定すると、全てのクラス同士の比較をするTripletの組み合わせは単純に考えて190個ある. それを考慮するとBatch Sizeは最低でも570は必要である. このことからすべてのtripletの組み合わせを一つのミニバッチに入れておきたいのであれば大きくした方が良いといえる. これは少し違う分野だがContractive Learningだと良く行われているようで概ね間違っていないのではないかと考えている. なお, Pytorch Metric LearningではBatch Sizeを大きくする際にエラーが出ることがある. https://github.com/KevinMusgrave/pytorch-metric-learning/issues/367 ここにあるように、バッチサイズを小さくする以外に対処方がないようである.(2022/07/14現在) 現状自分のデータセットであるとBatch Size=1024までは動作できていることを確認した. なお、ミニバッチのサイズが大きくなると学習は進みにくなるので、epochは大きくすることを勧める.</description>
+    </item>
+    
     <item>
       <title>Squared Earth Mover&#39;s Distanceを二次元平面に適用するやつをPytorchで実装した</title>
       <link>https://hyuuri.github.io/post/2022/05/28/squared-earth-movers-distance%E3%82%92%E4%BA%8C%E6%AC%A1%E5%85%83%E5%B9%B3%E9%9D%A2%E3%81%AB%E9%81%A9%E7%94%A8%E3%81%99%E3%82%8B%E3%82%84%E3%81%A4%E3%82%92pytorch%E3%81%A7%E5%AE%9F%E8%A3%85%E3%81%97%E3%81%9F/</link>
@@ -20,7 +31,7 @@ KL距離などと似ていますが、EMDは重み、という概念を用いる
 なぜ今回これを作ったか 研究で尤度マップをモデルに生成させており、その学習に用いてみようと思い立ったためです。
 単純に考えれば、正解ラベルの尤度マップとのMSELoss(二乗誤差損失)でも問題ないようにも思いますが、肝心の尤度の分布のズレ等は反映されない問題があります。
 実装 結構単純です
-def SquaredEMDLoss(self,y_pred, y_true): 	integral_y_true = torch.cumsum(torch.cumsum(y_true, dim=3), dim=2) 	integral_y_pred = torch.cumsum(torch.cumsum(y_pred, dim=3), dim=2) 	square = torch.square(integral_y_true - integral_y_pred) 	square_sum = torch.sum(torch.sum(square, dim=3), dim=2) 	mean = torch.div(square_sum, len(y_pred[0][0])**2) 	distance = torch.mean(mean) 	return distance 二次元行列の積分画像的なものを作成し、その差分を取り、二乗和を取ります。あとはそのBatchの平均を取ってLossとします。 (間違いがあれば教えて下さい。)
+def SquaredEMDLoss(self,y_pred, y_true): integral_y_true = torch.cumsum(torch.cumsum(y_true, dim=3), dim=2) integral_y_pred = torch.cumsum(torch.cumsum(y_pred, dim=3), dim=2) square = torch.square(integral_y_true - integral_y_pred) square_sum = torch.sum(torch.sum(square, dim=3), dim=2) mean = torch.div(square_sum, len(y_pred[0][0])**2) distance = torch.mean(mean) return distance 二次元行列の積分画像的なものを作成し、その差分を取り、二乗和を取ります。あとはそのBatchの平均を取ってLossとします。 (間違いがあれば教えて下さい。)
 現状 計算量はGPU上で行ってもそこそこ重めです。速度の計測はしていませんがそこそこ遅いので我慢してください。 ただし、結構分布としては近づくように学習は進んでいるので意図通りのものはできたのかなと思います。
 *追記 学習そのものは進みますが、最適化問題を無理やり微分可能なものに落とし込んでいるために、学習結果自体は芳しいものにはなりませんでした。
 尤度マップがギザギザになってしまったり、曖昧な表現が難しくなってしまいました。うまく活かせるタスクとそうでないタスクを選びそうです。
