@@ -2,16 +2,19 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://hyuuri.github.io/post/2022/07/20/domain-adaptation%E3%82%92%E7%9F%A5%E3%82%89%E3%81%AA%E3%81%8B%E3%81%A3%E3%81%9F%E8%A9%B1/</loc>
+    <lastmod>2022-07-20T15:03:30+09:00</lastmod>
+  </url><url>
+    <loc>https://hyuuri.github.io/</loc>
+    <lastmod>2022-07-20T15:03:30+09:00</lastmod>
+  </url><url>
+    <loc>https://hyuuri.github.io/post/</loc>
+    <lastmod>2022-07-20T15:03:30+09:00</lastmod>
+  </url><url>
     <loc>https://hyuuri.github.io/categories/</loc>
     <lastmod>2022-07-14T13:51:12+09:00</lastmod>
   </url><url>
-    <loc>https://hyuuri.github.io/</loc>
-    <lastmod>2022-07-14T13:51:12+09:00</lastmod>
-  </url><url>
     <loc>https://hyuuri.github.io/tags/metric-learning/</loc>
-    <lastmod>2022-07-14T13:51:12+09:00</lastmod>
-  </url><url>
-    <loc>https://hyuuri.github.io/post/</loc>
     <lastmod>2022-07-14T13:51:12+09:00</lastmod>
   </url><url>
     <loc>https://hyuuri.github.io/tags/pytorch/</loc>

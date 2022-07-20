@@ -6,7 +6,16 @@
     <description>Recent content in Home on in-my-space</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>jp</language>
-    <lastBuildDate>Thu, 14 Jul 2022 13:51:12 +0900</lastBuildDate><atom:link href="https://hyuuri.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 20 Jul 2022 15:03:30 +0900</lastBuildDate><atom:link href="https://hyuuri.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Domain Adaptationを知らなかった話</title>
+      <link>https://hyuuri.github.io/post/2022/07/20/domain-adaptation%E3%82%92%E7%9F%A5%E3%82%89%E3%81%AA%E3%81%8B%E3%81%A3%E3%81%9F%E8%A9%B1/</link>
+      <pubDate>Wed, 20 Jul 2022 15:03:30 +0900</pubDate>
+      
+      <guid>https://hyuuri.github.io/post/2022/07/20/domain-adaptation%E3%82%92%E7%9F%A5%E3%82%89%E3%81%AA%E3%81%8B%E3%81%A3%E3%81%9F%E8%A9%B1/</guid>
+      <description>Domain Adaptaionとは モチベ ちゃんとしたデータを集めるのはメンドイ - やりたいタスクに合うデータを見つけるのはかなり大変、作るのも面倒 - 見つけても正しくアノテーションされている保証はない（正しいアノテーションが曖昧な場合もある） やっていること 十分なデータがあるタスクでのモデルを拝借して目的のタスクを行う - 転移学習(transfer learning)の一種 - Source Domain(元タスク)から目的のTarget Domain(目的タスク)に適用させる 感想 直感的には結構難しそう. 基本方針は敵対的な学習でドメイン間の分布を近づけるらしい（GANを思い出す） これだけだと結局近づくだけで、目的タスクで識別可能になるかは別問題だし結構大変らしい.</description>
+    </item>
+    
     <item>
       <title>Pytorch Metric Learningでのバッチサイズの話</title>
       <link>https://hyuuri.github.io/post/2022/07/14/pytorch-metric-learning%E3%81%A7%E3%81%AE%E3%83%90%E3%83%83%E3%83%81%E3%82%B5%E3%82%A4%E3%82%BA%E3%81%AE%E8%A9%B1/</link>
