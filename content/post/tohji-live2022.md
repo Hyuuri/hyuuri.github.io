@@ -58,3 +58,8 @@ Ultra Rareでぶっ飛んで、Super Ocean Manで踊りまくって、汗かき�
 
 死ぬほど疲れたけどまた来年も行きたいなぁ
 
+<img
+  id="tohji"
+  src="/images/tohji_live2022.png"
+  alt="Super Ocean Man"
+  >
