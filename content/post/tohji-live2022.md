@@ -60,6 +60,7 @@ Ultra Rareでぶっ飛んで、Super Ocean Manで踊りまくって、汗かき�
 
 <img
   id="tohji"
-  src="/images/tohji_live2022.png"
+  src="/images/tohji_live2022.jpg"
   alt="Super Ocean Man"
-  >
+  width="320"
+  height="180">
