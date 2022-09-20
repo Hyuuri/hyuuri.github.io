@@ -18,14 +18,15 @@ tags:
 どこまで起動するか、についていうとUEFIまでは起動する。<br />
 で，どのブートローダを選ぶ画面に突っ込んでしまい、肝心のUbuntu本体を選んでも以下のエラーが出てきて起動しないといった感じです.
 
-'''
+~~~
 Gave up waiting for root device. Common problems:
  - Boot args (cat /proc/cmdline)
    - Check rootdelay= (did the system wait long enough?)
    - Check root= (did the system wait for the right device?)
  - Missing modules (cat /proc/modules; ls /dev)
 ALERT! /dev/disk/by-uuid/XXXX does not exist. Dropping to a shell!
-'''
+~~~
+
 どうやら起動時にrootデバイスのがちゃんと立ち上がるのを確認出来なかった？みたいです. <br />
 これはなんでなんだろう...?と思ったので調べました.<br />
 
