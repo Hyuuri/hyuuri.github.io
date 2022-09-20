@@ -6,7 +6,26 @@
     <description>Recent content in Posts on in-my-space</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>jp</language>
-    <lastBuildDate>Mon, 05 Sep 2022 22:18:39 +0900</lastBuildDate><atom:link href="https://hyuuri.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 20 Sep 2022 12:54:45 +0900</lastBuildDate><atom:link href="https://hyuuri.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>StorageのSATA関連の設定でUbuntuが起動しなかった話</title>
+      <link>https://hyuuri.github.io/post/2022/09/20/storage%E3%81%AEsata%E9%96%A2%E9%80%A3%E3%81%AE%E8%A8%AD%E5%AE%9A%E3%81%A7ubuntu%E3%81%8C%E8%B5%B7%E5%8B%95%E3%81%97%E3%81%AA%E3%81%8B%E3%81%A3%E3%81%9F%E8%A9%B1/</link>
+      <pubDate>Tue, 20 Sep 2022 12:54:45 +0900</pubDate>
+      
+      <guid>https://hyuuri.github.io/post/2022/09/20/storage%E3%81%AEsata%E9%96%A2%E9%80%A3%E3%81%AE%E8%A8%AD%E5%AE%9A%E3%81%A7ubuntu%E3%81%8C%E8%B5%B7%E5%8B%95%E3%81%97%E3%81%AA%E3%81%8B%E3%81%A3%E3%81%9F%E8%A9%B1/</guid>
+      <description>何が起こったか 研究室のノートPCでやたら定期的にOSが起動しなくなるPCが見つかった。
+実験で使うPCで非常に安定性がアレで困っていたので原因を調査することにした。
+PCに起こっていた現象の詳細 どこまで起動するか、についていうとUEFIまでは起動する。
+で，どのブートローダを選ぶ画面に突っ込んでしまい、肝心のUbuntu本体を選んでも以下のエラーが出てきて起動しないといった感じです.
+&amp;rsquo;&amp;rsquo;&#39; Gave up waiting for root device. Common problems:
+Boot args (cat /proc/cmdline) Check rootdelay= (did the system wait long enough?) Check root= (did the system wait for the right device?) Missing modules (cat /proc/modules; ls /dev) ALERT! /dev/disk/by-uuid/XXXX does not exist. Dropping to a shell! &amp;rsquo;&amp;rsquo;&#39; どうやら起動時にrootデバイスのがちゃんと立ち上がるのを確認出来なかった？みたいです. これはなんでなんだろう&amp;hellip;?と思ったので調べました.
+解決法 結論としてはSATAストレージのインターフェースの設定をAHCIという新しいモノに切り替えれば解決シマス.
+やることは単純で，BIOSのSATAのインターフェーズのところをAHCIに変更するだけです. なんでこうなったの？ これはStack Overflowで見かけただけなんですが、一定期間起動しないとPC側で自動的にSATAのインターフェース設定がIDEという汎用性が高いものの古いものに変更されることが原因のようです．
+AHCIとIDEについてはこのサイトを参考にするとわかりやすいです. つまり，AHCIは新しめの規格で新しいSATAの機能もりもりで新しいデバイスにも対応できるようです．（合ってる？）
+AHCIでOSがインスコされているのに，IDEで起動しようとするとストレージの速度が出ずLinux側が待ちきれなくなってUbuntuをうまく起動出来なかったのではと思っています。
+（運動会で張り切って全力疾走して体に気持ちがついてこなかった結果コケちゃうお父さん現象？）</description>
+    </item>
+    
     <item>
       <title>Tohji Live2022</title>
       <link>https://hyuuri.github.io/post/2022/09/05/tohji-live2022/</link>
