@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>めんどくさいオブ・ザ・イヤー2023受賞 on in-my-space</title>
+    <link>https://hyuuri.github.io/tags/%E3%82%81%E3%82%93%E3%81%A9%E3%81%8F%E3%81%95%E3%81%84%E3%82%AA%E3%83%96%E3%82%B6%E3%82%A4%E3%83%A4%E3%83%BC2023%E5%8F%97%E8%B3%9E/</link>
+    <description>Recent content in めんどくさいオブ・ザ・イヤー2023受賞 on in-my-space</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>jp</language>
+    <lastBuildDate>Wed, 21 Sep 2022 14:18:35 +0900</lastBuildDate><atom:link href="https://hyuuri.github.io/tags/%E3%82%81%E3%82%93%E3%81%A9%E3%81%8F%E3%81%95%E3%81%84%E3%82%AA%E3%83%96%E3%82%B6%E3%82%A4%E3%83%A4%E3%83%BC2023%E5%8F%97%E8%B3%9E/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ROS&#43;Singularity&#43;Azure Kinectで幸せになる（ならん）</title>
+      <link>https://hyuuri.github.io/post/2022/09/21/ros-singularity-azure-kinect%E3%81%A7%E5%B9%B8%E3%81%9B%E3%81%AB%E3%81%AA%E3%82%8B%E3%81%AA%E3%82%89%E3%82%93/</link>
+      <pubDate>Wed, 21 Sep 2022 14:18:35 +0900</pubDate>
+      
+      <guid>https://hyuuri.github.io/post/2022/09/21/ros-singularity-azure-kinect%E3%81%A7%E5%B9%B8%E3%81%9B%E3%81%AB%E3%81%AA%E3%82%8B%E3%81%AA%E3%82%89%E3%82%93/</guid>
+      <description>モチベーション 澪田：「ROSでAzure Kinectを動かしたいッス！」
+澪田：「でもPCの環境を汚したくないッス！」
+みたいなときに使えるかもしれない。 前提として述べておくと、基本的にネイティブのUbuntuにそのままROSを載せて動かすほうがよっぽど楽である。
+PC間通信も楽だし、USB周りも楽、何より基本的なトラブルシューティングがずっと調べやすい。
+ちゃんとSLAMとかやりたいならSinguralityでROSを動かして、なんてはためんどくさいことせずに環境構築をやったほうが良い。
+Singularityについての詳細な説明は省く。
+要はDockerだけど/devとかをいい感じにしてくれる上にROOT権限がなくても色々できるわけだ。(fakeroot権限のみはrootユーザに登録してもらわないとダメだけど)
+準備 - Azure Kinect - 強めのUbuntu PC（Ubuntuは18.04以上) - Singularityのインスコ やること 以下のDockerfileチックなdefファイルを使ってimageを作成する。
+Bootstrap: docker From: nvidia/cuda:11.6.0-devel-ubuntu18.04 %environment export CUDA_PATH=/usr/local/cuda export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH source /opt/ros/melodic/setup.bash %post # mirrorを設定 perl -p -i.bak -e &amp;#39;s%(deb(?:-src|)\s+)https?://(?!archive\.canonical\.com|security\.ubuntu\.com)[^\s]+%$1http://ftp.riken.jp/Linux/ubuntu/%&amp;#39; /etc/apt/sources.list export DEBIAN_FRONTEND=noninteractive export TZ=Asia/Tokyo export CUDA_PATH=/usr/local/cuda export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH apt-get -y update apt-get -y dist-upgrade apt-get -y install wget git build-essential curl lsb-release gcc # Install ROS sh -c &amp;#39;echo &amp;#34;deb http://packages.</description>
+    </item>
+    
+  </channel>
+</rss>
